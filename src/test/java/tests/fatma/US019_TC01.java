@@ -7,10 +7,12 @@ import org.testng.annotations.Test;
 import pages.FatmaPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
-public class US012_TC03 {
+public class US019_TC01 {
     @Test
-    public void test03() throws InterruptedException {
+    public void test01() throws InterruptedException {
+
         FatmaPage alloverPage = new FatmaPage();
         Actions actions=new Actions(Driver.getDriver());
         //1.Belirtilen URL` ye gidilir
@@ -26,15 +28,15 @@ public class US012_TC03 {
                 .sendKeys(Keys.TAB, Keys.TAB, Keys.TAB, Keys.ENTER).perform();
         Thread.sleep(3000);
         //6. My Account’a tıklanır.
-        alloverPage.jse.executeScript("arguments[0].click();", alloverPage.myAccount);
-        Thread.sleep(3000);
-        //7.Address'lere tıklanır.
-        alloverPage.jse.executeScript("arguments[0].click();",alloverPage.addressesButton);
-        //8.Fatura adresi görünürlüğü test edilir.
-        Assert.assertTrue(alloverPage.billingAddressText.isDisplayed());
-        //9.Gönderim adresi görünürlüğü test edilir.
-        Assert.assertTrue(alloverPage.shippingAddressText.isDisplayed());
-        //9- sayfayi kapatir
+        alloverPage.jse.executeScript("arguments[0].click();",alloverPage.myAccount);
+        //7.Store manager’a tıklanır ve sonrasında Followers'a tıklanır
+        alloverPage.storeManagerButton.click();
+        alloverPage.jse.executeScript("arguments[0].click();",alloverPage.follewers);
+        ReusableMethods.waitFor(3);
+        //8.İsim ve e posta görünürlüğü test edilir.
+        Assert.assertTrue(alloverPage.follewersName.isDisplayed());
+        Assert.assertTrue(alloverPage.follewersEmail.isDisplayed());
+        //9.sayfayı kapatın
         Driver.closeDriver();
     }
 }
