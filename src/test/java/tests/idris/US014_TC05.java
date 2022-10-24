@@ -1,9 +1,10 @@
 package tests.idris;
 
-import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -15,11 +16,12 @@ import utilities.TestBaseRapor;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 
-public class US009_TC01 extends TestBaseRapor {
+public class US014_TC05 extends TestBaseRapor {
     @Test
     public void test() throws InterruptedException, IOException {
-        extentTest=extentReports.createTest("US009_TC01", "Shipping opsiyonu - Kilo ve boyut belirlenmeli");
+        extentTest=extentReports.createTest("US014_TC05", "Exclude categories / bazi kategorileri disinda tut");
 
         IdrisPage page = new IdrisPage();
         Actions actions = new Actions(Driver.getDriver());
@@ -55,38 +57,31 @@ public class US009_TC01 extends TestBaseRapor {
         page.storeManager.click();
         extentTest.pass("Store Manager butonuna tiklandi");
 
-        // "Products" altında bulunan "Add New" butonuna tıklanır
-        page.products.click();
-        page.productsAddNew.click();
+        // "Coupons" altında bulunan "Add New" butonuna tıklanır
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+        jse.executeScript("arguments[0].click();", page.coupons);
+        page.couponsAddNew.click();
         extentTest.pass("Add New butonuna tiklandi");
 
-        // "Shipping" butonuna tıklanır
-        jse.executeScript("arguments[0].click();", page.shipping);
-        extentTest.pass("Shipping butonuna tiklandi");
+        // "Exclude categories" seçeneği tıklanır
+        actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
 
-        Assert.assertTrue(page.shippingWeight.isEnabled());
-        extentTest.pass("Weight bölümü erisilebilir oldugu dogrulandı");
+        Select select=new Select(page.ddExcludeCategories);
+        Thread.sleep(2000);
 
-        Assert.assertTrue(page.dimensionsLength.isEnabled());
-        extentTest.pass("Length bölümü erisilebilir oldugu dogrulandı");
-
-        Assert.assertTrue(page.dimensionsWidth.isEnabled());
-        extentTest.pass("Width bölümü erisilebilir oldugu dogrulandı");
-
-        Assert.assertTrue(page.dimensionsHeight.isEnabled());
-        extentTest.pass("Height bölümü erisilebilir oldugu dogrulandı");
-
-        // "Weight (kg)" bölümüne tıklanarak kilo girişi yapılır
-        page.shippingWeight.sendKeys("5");
-        extentTest.pass("Weight (kg) bölümüne tiklanarak kilo girisi yapildi");
-        Thread.sleep(3000);
-
-        // "Dimensions (cm)" bölümüne tıklanarak boyutlar girilir
-        actions.sendKeys(Keys.TAB).sendKeys("5").sendKeys(Keys.TAB).sendKeys("4").sendKeys(Keys.TAB).sendKeys("3")
-                .sendKeys(Keys.END).sendKeys(Keys.TAB).perform();
-        extentTest.pass("Dimensions bölümüne tiklanarak boyutlar girildi");
+        List<WebElement> ddmList = select.getOptions();
+        for (int i = 0; i < ddmList.size(); i++) {
+            select.selectByIndex(i);
+            Thread.sleep(200);
+        }
+        extentTest.pass("Dropdown menüdeki tüm seçeneklere tek tek tiklandi");
         Thread.sleep(1000);
 
-        ReusableMethods.getScreenshot("US009_TC01");
+        ReusableMethods.getScreenshot("US014_TC05");
+
     }
 }
+
+
+
