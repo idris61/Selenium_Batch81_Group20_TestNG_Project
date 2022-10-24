@@ -31,6 +31,7 @@ public class US013_TC01 {
        //"sign in" tiklanir
         page.signInWE.click();
 
+
        //Gecerli veriler ile "sign in" yapilir
         page.userNameWE.sendKeys(ConfigReader.getProperty("userName"));
         page.passwordWE.sendKeys(ConfigReader.getProperty("password"));
