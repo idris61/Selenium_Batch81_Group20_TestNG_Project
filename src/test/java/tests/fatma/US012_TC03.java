@@ -34,7 +34,7 @@ public class US012_TC03 {
         Assert.assertTrue(alloverPage.billingAddressText.isDisplayed());
         //9.Gönderim adresi görünürlüğü test edilir.
         Assert.assertTrue(alloverPage.shippingAddressText.isDisplayed());
-        //9- sayfayi kapatir
+        //10- sayfayi kapatir
         Driver.closeDriver();
     }
 }
