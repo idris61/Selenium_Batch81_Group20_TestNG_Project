@@ -47,4 +47,12 @@ public class FatmaPage {
     public WebElement succesfully;
     @FindBy(xpath = "//*[text()='Store Manager']")
     public WebElement storeManagerButton;
+    @FindBy (xpath = "(//*[@class='text'])[11]")
+    public WebElement follewers;
+    @FindBy (xpath = "//thead//tr//th[1]")
+    public WebElement follewersName;
+    @FindBy (xpath = "//thead//tr//th[2]")
+    public WebElement follewersEmail;
+    @FindBy (xpath = "//thead//tr//th[3]")
+    public WebElement follewersActions;
 }
