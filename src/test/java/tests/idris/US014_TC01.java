@@ -35,11 +35,11 @@ public class US014_TC01 extends TestBaseRapor {
         extentTest.info("Sing in butonuna tiklandi");
 
         // "Username or email adress" bölümüne vendor email girilir
-        page.username.sendKeys("grup20.testng@gmail.com");
+        page.username.sendKeys(ConfigReader.getProperty("alloverValidEmail"));
         extentTest.info("Username or email adress bölümüne vendor email girildi");
 
         // "Password" bölümüne verdor password girilir
-        actions.sendKeys(Keys.TAB).sendKeys("Vendor20.,").perform();
+        actions.sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("alloverValidPassword")).perform();
         extentTest.info("Password bölümüne verdor password girildi");
 
         // "Sing in" butonuna tıklanır
