@@ -28,6 +28,7 @@ public class US010_TC01 {
         //Belirtilen URL` ye gidilir "https://allovercommerce.com/"
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
 
+
         //Sing in butonuna tıklanır
         hercaiPage.singin.click();
 
