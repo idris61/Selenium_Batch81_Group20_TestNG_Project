@@ -36,7 +36,7 @@ public class US012_TC01 {
         for (WebElement w: alloverPage.ordersHeaderList){
             Assert.assertTrue(w.isDisplayed());
         }
-        //10- sayfayi kapatir
-        Driver.closeDriver();
+
+
     }
 }
