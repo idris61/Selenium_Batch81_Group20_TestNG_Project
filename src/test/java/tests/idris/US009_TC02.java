@@ -32,41 +32,41 @@ public class US009_TC02 extends TestBaseRapor {
 
         // Belirtilen URL` ye gidilir
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
-        extentTest.pass("Belirtilen URL` ye gidildi");
+        extentTest.info("Belirtilen URL` ye gidildi");
 
         // "Sing in" butonuna tıklanır
         page.signIn.click();
-        extentTest.pass("Sing in butonuna tiklandi");
+        extentTest.info("Sing in butonuna tiklandi");
 
         // "Username or email adress" bölümüne vendor email girilir
-        page.username.sendKeys("grup20.testng@gmail.com");
-        extentTest.pass("Username or email adress bölümüne vendor email girildi");
+        page.username.sendKeys(ConfigReader.getProperty("alloverValidEmail"));
+        extentTest.info("Username or email adress bölümüne vendor email girildi");
 
         // "Password" bölümüne verdor password girilir
-        actions.sendKeys(Keys.TAB).sendKeys("Vendor20.,").perform();
-        extentTest.pass("Password bölümüne verdor password girildi");
+        actions.sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("alloverValidPassword")).perform();
+        extentTest.info("Password bölümüne verdor password girildi");
 
         // "Sing in" butonuna tıklanır
         page.signIn2.click();
         Driver.getDriver().navigate().refresh();
-        extentTest.pass("Sing in butonuna tiklandi");
+        extentTest.info("Sing in butonuna tiklandi");
 
         // Açılan sayfanın alt kısmında bulunan "My Account" butonuna tıklanır
         jse.executeScript("arguments[0].click();", page.myAccount);
-        extentTest.pass("My Account butonuna tiklandi");
+        extentTest.info("My Account butonuna tiklandi");
 
         // "Store Manager" butonuna tıklanır
         page.storeManager.click();
-        extentTest.pass("Store Manager butonuna tiklandi");
+        extentTest.info("Store Manager butonuna tiklandi");
 
         // "Products" altında bulunan "Add New" butonuna tıklanır
         page.products.click();
         page.productsAddNew.click();
-        extentTest.pass("Add New butonuna tiklandi");
+        extentTest.info("Add New butonuna tiklandi");
 
         // "Shipping" butonuna tıklanır
         jse.executeScript("arguments[0].click();", page.shipping);
-        extentTest.pass("Shipping butonuna tiklandi");
+        extentTest.info("Shipping butonuna tiklandi");
 
         //"Processing Time" bölümünden teslimat süresi seçilir
         actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).perform();
@@ -76,7 +76,7 @@ public class US009_TC02 extends TestBaseRapor {
             select.selectByIndex(i);
             Thread.sleep(3000);
         }
-        extentTest.pass("Dropdown menüdeki tüm seçeneklere tek tek tiklandi");
+        extentTest.info("Dropdown menüdeki tüm seçeneklere tek tek tiklandi");
 
         //"Hacim" belirlenir
         List<WebElement> shippingList = page.shippingTamami;

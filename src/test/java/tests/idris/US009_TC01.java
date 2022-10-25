@@ -28,57 +28,57 @@ public class US009_TC01 extends TestBaseRapor {
 
         // Belirtilen URL` ye gidilir
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
-        extentTest.pass("Belirtilen URL` ye gidildi");
+        extentTest.info("Belirtilen URL` ye gidildi");
 
         // "Sing in" butonuna tıklanır
         page.signIn.click();
-        extentTest.pass("Sing in butonuna tiklandi");
+        extentTest.info("Sing in butonuna tiklandi");
 
         // "Username or email adress" bölümüne vendor email girilir
-        page.username.sendKeys("grup20.testng@gmail.com");
-        extentTest.pass("Username or email adress bölümüne vendor email girildi");
+        page.username.sendKeys(ConfigReader.getProperty("alloverValidEmail"));
+        extentTest.info("Username or email adress bölümüne vendor email girildi");
 
         // "Password" bölümüne verdor password girilir
-        actions.sendKeys(Keys.TAB).sendKeys("Vendor20.,").perform();
-        extentTest.pass("Password bölümüne verdor password girildi");
+        actions.sendKeys(Keys.TAB).sendKeys(ConfigReader.getProperty("alloverValidPassword")).perform();
+        extentTest.info("Password bölümüne verdor password girildi");
 
         // "Sing in" butonuna tıklanır
         page.signIn2.click();
         Driver.getDriver().navigate().refresh();
-        extentTest.pass("Sing in butonuna tiklandi");
+        extentTest.info("Sing in butonuna tiklandi");
 
         // Açılan sayfanın alt kısmında bulunan "My Account" butonuna tıklanır
         jse.executeScript("arguments[0].click();", page.myAccount);
-        extentTest.pass("My Account butonuna tiklandi");
+        extentTest.info("My Account butonuna tiklandi");
 
         // "Store Manager" butonuna tıklanır
         page.storeManager.click();
-        extentTest.pass("Store Manager butonuna tiklandi");
+        extentTest.info("Store Manager butonuna tiklandi");
 
         // "Products" altında bulunan "Add New" butonuna tıklanır
         page.products.click();
         page.productsAddNew.click();
-        extentTest.pass("Add New butonuna tiklandi");
+        extentTest.info("Add New butonuna tiklandi");
 
         // "Shipping" butonuna tıklanır
         jse.executeScript("arguments[0].click();", page.shipping);
-        extentTest.pass("Shipping butonuna tiklandi");
+        extentTest.info("Shipping butonuna tiklandi");
 
         Assert.assertTrue(page.shippingWeight.isEnabled());
-        extentTest.pass("Weight bölümü erisilebilir oldugu dogrulandı");
+        extentTest.info("Weight bölümü erisilebilir oldugu dogrulandı");
 
         Assert.assertTrue(page.dimensionsLength.isEnabled());
-        extentTest.pass("Length bölümü erisilebilir oldugu dogrulandı");
+        extentTest.info("Length bölümü erisilebilir oldugu dogrulandı");
 
         Assert.assertTrue(page.dimensionsWidth.isEnabled());
-        extentTest.pass("Width bölümü erisilebilir oldugu dogrulandı");
+        extentTest.info("Width bölümü erisilebilir oldugu dogrulandı");
 
         Assert.assertTrue(page.dimensionsHeight.isEnabled());
-        extentTest.pass("Height bölümü erisilebilir oldugu dogrulandı");
+        extentTest.info("Height bölümü erisilebilir oldugu dogrulandı");
 
         // "Weight (kg)" bölümüne tıklanarak kilo girişi yapılır
         page.shippingWeight.sendKeys("5");
-        extentTest.pass("Weight (kg) bölümüne tiklanarak kilo girisi yapildi");
+        extentTest.info("Weight (kg) bölümüne tiklanarak kilo girisi yapildi");
         Thread.sleep(3000);
 
         // "Dimensions (cm)" bölümüne tıklanarak boyutlar girilir
@@ -88,12 +88,5 @@ public class US009_TC01 extends TestBaseRapor {
         Thread.sleep(1000);
 
         ReusableMethods.getScreenshot("US009_TC01");
-
-
-
-
-
-
-
     }
 }
