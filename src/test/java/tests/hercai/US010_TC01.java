@@ -18,7 +18,7 @@ import java.util.List;
 public class US010_TC01 {
 
     HercaiPage hercaiPage = new HercaiPage();
-    //
+    // //
     Actions actions = new Actions(Driver.getDriver());
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
     JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
