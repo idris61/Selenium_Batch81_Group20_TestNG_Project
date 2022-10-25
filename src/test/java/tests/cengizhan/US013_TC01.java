@@ -27,13 +27,11 @@ public class US013_TC01 {
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
 
        //"sign in" tiklanir
-
         page.signInWE.click();
 
        //Gecerli veriler ile "sign in" yapilir
-
-        page.userNameWE.sendKeys(ConfigReader.getProperty("userName"));
-        page.passwordWE.sendKeys(ConfigReader.getProperty("password"));
+        page.userNameWE.sendKeys(ConfigReader.getProperty("alloverValidEmail"));
+        page.passwordWE.sendKeys(ConfigReader.getProperty("alloverValidPassword"));
         page.signInButtonWE.click();
         wait.until(ExceptedCondition.visibilityOf(page.myAccountWE));
 
