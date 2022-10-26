@@ -56,6 +56,11 @@ public class US001_TC01 {
         //ilkUrun.click();
         WebElement ikinciUrun=Driver.getDriver().findElement(By.xpath("//a[@href='?add-to-cart=14782']"));
         jse.executeScript("arguments[0].click()",ikinciUrun);
+        WebElement urunAdedi=Driver.getDriver().findElement(By.xpath("(//span[@class='cart-count'])[1]"));
+        String urunSayisi=urunAdedi.getText();
+        System.out.println(urunSayisi);
+        Assert.assertTrue(!urunSayisi.equals("0"));
+
 
 
     }
