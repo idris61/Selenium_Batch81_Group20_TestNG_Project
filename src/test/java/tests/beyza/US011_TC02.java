@@ -3,17 +3,21 @@ package tests.beyza;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.BeyzaPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
+
+import java.io.IOException;
 
 public class US011_TC02 extends TestBaseRapor {
     BeyzaPage beyzaPage = new BeyzaPage();
     Actions actions = new Actions(Driver.getDriver());
     @Test
-    public void testTC002() {
+    public void testTC002() throws IOException, InterruptedException {
 
          extentTest = extentReports.createTest("alloverUrl", "Web automation Raporlama");
 
@@ -69,9 +73,11 @@ public class US011_TC02 extends TestBaseRapor {
 
 
         // Units Per Piece bolumune veri girisi yapilir
-       beyzaPage.unitPerPiece.click();
-       actions.sendKeys("2345").perform();
-        extentTest.info("Units Per Piece bolumune veri girisi yapildi");
+       beyzaPage.unitPerPiece.sendKeys("234");
+        Assert.assertTrue(beyzaPage.unitPerPiece.isEnabled());
+        extentTest.pass("Units Per Piece bolumune veri girisi yapildi");
+        Thread.sleep(1000);
+        ReusableMethods.getScreenshot("US011_TC02");
 
 
     }
