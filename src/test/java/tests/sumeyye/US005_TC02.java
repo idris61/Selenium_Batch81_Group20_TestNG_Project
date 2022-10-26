@@ -16,7 +16,7 @@ public class US005_TC02 extends TestBaseRapor {
 
     @Test
     public void test() {
-        extentTest = extentReports.createTest("Pozitif Login", "Gecerli username ve sifre ile giris yapabilmeli");
+        extentTest = extentReports.createTest("Add new Product", "Products menüsünde ürün listesi görünürlüğü testi");
         //Belirtilen Url ye gidilir.
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
         extentTest.info("Allover anasayfaya gidildi.");
@@ -55,6 +55,6 @@ public class US005_TC02 extends TestBaseRapor {
         Assert.assertTrue(sumeyyePage.downloadableCheckBox.isSelected());
         extentTest.pass("downloadable checkbox'ın seçilebilir olduğu test edildi.");
         //Sayfa kapatılır.
-
+        Driver.closeDriver();
     }
 }
