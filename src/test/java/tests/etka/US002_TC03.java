@@ -62,7 +62,7 @@ public class US002_TC03 extends TestBaseRapor {
         extentTest.info("Dashboard altında Following bölümünün görünür olduğu test edildi.");
         // Dashboard altında "Logout" butonunun görünürlüğü doğrulanmalı
         Assert.assertTrue(etkaPage.logOutButton.isDisplayed());
-        extentTest.info("Dashboard altında Logout bölümünün görünür olduğu test edildi.");
+        extentTest.pass("Dashboard altında Logout bölümünün görünür olduğu test edildi.");
         //Dirver kapatılır.
         Driver.closeDriver();
     }
