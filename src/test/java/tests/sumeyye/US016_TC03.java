@@ -1,9 +1,8 @@
 package tests.sumeyye;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.SumeyyePage;
 import utilities.ConfigReader;
@@ -11,7 +10,9 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 
-public class US005_TC01 extends TestBaseRapor {
+public class US016_TC03 extends TestBaseRapor {
+
+
     SumeyyePage sumeyyePage = new SumeyyePage();
     Actions actions = new Actions(Driver.getDriver());
 
@@ -39,20 +40,16 @@ public class US005_TC01 extends TestBaseRapor {
         //Store manager’a tıklanır
         sumeyyePage.storeManagerButton.click();
         extentTest.info("Store Manager'a tıklandı.");
-        //Product’a tıklanır
-        sumeyyePage.products.click();
-        extentTest.info("Products'a tıklandı.");
-        //Ürün listisenin göründüğü test edilir (status, stock, price, date)
-        /*Assert.assertTrue(alloverPage.statusText.isDisplayed());
-        Assert.assertTrue(alloverPage.dateText.isDisplayed());
-        Assert.assertTrue(alloverPage.priceText.isDisplayed());
-        Assert.assertTrue(alloverPage.stockText.isDisplayed());*/
-        for (WebElement each : sumeyyePage.productHeaders
-        ) {
-            Assert.assertTrue(each.isDisplayed());
-        }
-        extentTest.pass("status, stock, price ve date görünürlüğü test edildi.");
-        //10. Sayfa kapatılır.
-        Driver.closeDriver();
+        //Customer’a tıklanır
+        sumeyyePage.jse.executeScript("arguments[0].click();", sumeyyePage.customersButton);
+        extentTest.info("Customer'a tıklandı.");
+        //Yeni kişi eklenebilirliği test edilir.(kullanıcı adı, email, isim,soyisim)
+        sumeyyePage.customerUserName.sendKeys(Faker.instance().name().username());
+        sumeyyePage.customerUserEmail.sendKeys(Faker.instance().internet().emailAddress());
+        ReusableMethods.waitFor(3);
+        sumeyyePage.customerFirstName.sendKeys(Faker.instance().name().firstName());
+        ReusableMethods.waitFor(3);
+        sumeyyePage.customerLastName.sendKeys(Faker.instance().name().lastName());
+        extentTest.pass("Yeni kişi eklenebildiği test edildi.");
     }
 }

@@ -11,7 +11,11 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 
-public class US005_TC01 extends TestBaseRapor {
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+public class US016_TC02 extends TestBaseRapor {
+
     SumeyyePage sumeyyePage = new SumeyyePage();
     Actions actions = new Actions(Driver.getDriver());
 
@@ -39,20 +43,19 @@ public class US005_TC01 extends TestBaseRapor {
         //Store manager’a tıklanır
         sumeyyePage.storeManagerButton.click();
         extentTest.info("Store Manager'a tıklandı.");
-        //Product’a tıklanır
-        sumeyyePage.products.click();
-        extentTest.info("Products'a tıklandı.");
-        //Ürün listisenin göründüğü test edilir (status, stock, price, date)
-        /*Assert.assertTrue(alloverPage.statusText.isDisplayed());
-        Assert.assertTrue(alloverPage.dateText.isDisplayed());
-        Assert.assertTrue(alloverPage.priceText.isDisplayed());
-        Assert.assertTrue(alloverPage.stockText.isDisplayed());*/
-        for (WebElement each : sumeyyePage.productHeaders
+        //Customer’a tıklanır
+        sumeyyePage.jse.executeScript("arguments[0].click();", sumeyyePage.customersButton);
+        extentTest.info("Customer'a tıklandı.");
+        //Pdf Excel ve Csv olarak indirilebilirliği test edilir.
+        for (WebElement each: sumeyyePage.pdfExcelCSV
         ) {
-            Assert.assertTrue(each.isDisplayed());
+            each.click();
         }
-        extentTest.pass("status, stock, price ve date görünürlüğü test edildi.");
-        //10. Sayfa kapatılır.
-        Driver.closeDriver();
+        ReusableMethods.waitFor(4);
+        Assert.assertTrue(Files.exists(Path.of("C:\\Users\\90552\\Downloads\\Store Manager - Allover Commerce.pdf")));
+        Assert.assertTrue(Files.exists(Path.of("C:\\Users\\90552\\Downloads\\Store Manager - Allover Commerce.csv")));
+        Assert.assertTrue(Files.exists(Path.of("C:\\Users\\90552\\Downloads\\Store Manager - Allover Commerce.xlsx")));
+        extentTest.pass("PDF Excel ve CSV dosyalarının indirildiği test edildi.");
+
     }
 }

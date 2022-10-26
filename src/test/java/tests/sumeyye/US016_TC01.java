@@ -11,7 +11,7 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 
-public class US005_TC01 extends TestBaseRapor {
+public class US016_TC01 extends TestBaseRapor {
     SumeyyePage sumeyyePage = new SumeyyePage();
     Actions actions = new Actions(Driver.getDriver());
 
@@ -39,20 +39,18 @@ public class US005_TC01 extends TestBaseRapor {
         //Store manager’a tıklanır
         sumeyyePage.storeManagerButton.click();
         extentTest.info("Store Manager'a tıklandı.");
-        //Product’a tıklanır
-        sumeyyePage.products.click();
-        extentTest.info("Products'a tıklandı.");
-        //Ürün listisenin göründüğü test edilir (status, stock, price, date)
-        /*Assert.assertTrue(alloverPage.statusText.isDisplayed());
-        Assert.assertTrue(alloverPage.dateText.isDisplayed());
-        Assert.assertTrue(alloverPage.priceText.isDisplayed());
-        Assert.assertTrue(alloverPage.stockText.isDisplayed());*/
-        for (WebElement each : sumeyyePage.productHeaders
+        //Customer’a tıklanır
+        sumeyyePage.jse.executeScript("arguments[0].click();", sumeyyePage.customersButton);
+        extentTest.info("Customer'a tıklandı.");
+        //kisilerin isim/ kullanıcı adi/ emaili, adresi, harcama miktarı,
+        // son siparişlerinin görünürlüğü test edilir
+        for (WebElement each: sumeyyePage.customerTableHeads
         ) {
             Assert.assertTrue(each.isDisplayed());
+            //System.out.println(each.getText());
         }
-        extentTest.pass("status, stock, price ve date görünürlüğü test edildi.");
-        //10. Sayfa kapatılır.
+        extentTest.pass("isilerin isim-kullanıcı adi-emaili-adresi-harcama miktarı-son siparişlerinin görünürlüğü test edildi.");
+       //Driver kapatılır.
         Driver.closeDriver();
     }
 }
