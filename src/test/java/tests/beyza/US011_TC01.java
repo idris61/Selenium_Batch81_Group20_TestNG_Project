@@ -1,6 +1,7 @@
 package tests.beyza;
 
 
+import org.apache.logging.log4j.message.ReusableMessage;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
@@ -9,13 +10,16 @@ import org.testng.annotations.Test;
 import pages.BeyzaPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
+
+import java.io.IOException;
 
 public class US011_TC01 extends TestBaseRapor {
     BeyzaPage beyzaPage = new BeyzaPage();
     Actions actions = new Actions(Driver.getDriver());
     @Test
-    public void testTC001() {
+    public void testTC001() throws InterruptedException, IOException {
         extentTest = extentReports.createTest("alloverUrl", "Web automation Raporlama");
 
 
@@ -59,14 +63,18 @@ public class US011_TC01 extends TestBaseRapor {
 
         jse.executeScript("arguments[0].scrollIntoView(true);", beyzaPage.products);
         jse.executeScript("arguments[0].click();", beyzaPage.products);
+        extentTest.info("Stor Manger'a tiklandi");
 
 
         // Add New butonuna tıklanır
         beyzaPage.addNew.click();
+        extentTest.info("Add New butonuna tıklandi");
 
         // Toptan urun gosterme ayarlari' butonuna tiklar
         jse.executeScript("arguments[0].scrollIntoView(true);", beyzaPage.toptanUrunlerGostermeAyarlari);
         jse.executeScript("arguments[0].click();", beyzaPage.toptanUrunlerGostermeAyarlari);
+        extentTest.info("Toptan urun gosterme ayarlari' butonuna tiklandi");
+        Thread.sleep(1000);
 
 
         // Piece Type' butonuna tiklar'
@@ -75,6 +83,9 @@ public class US011_TC01 extends TestBaseRapor {
         Select select = new Select(beyzaPage.pieceDdm);
         select.selectByIndex(1);
         extentTest.pass("piece 'i secti" );
+        Thread.sleep(1000);
+        ReusableMethods.getScreenshot("US011_TC01");
+
 
 
 
