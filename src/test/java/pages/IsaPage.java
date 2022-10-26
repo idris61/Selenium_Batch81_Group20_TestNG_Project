@@ -13,9 +13,8 @@ public class IsaPage {
 @FindBy(xpath="//span[text()='Sign In']")
 public
 WebElement signIn;
-    @FindBy(xpath="//label[@for='username']")
-   public
-    WebElement username;
+    @FindBy(xpath="(//input[@id='username'])[1]")
+    public WebElement username;
     @FindBy(xpath = "//input[@id='password']")
     public
     WebElement password;
