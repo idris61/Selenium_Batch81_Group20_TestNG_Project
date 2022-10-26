@@ -13,8 +13,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public abstract class TestBaseRapor {
-    protected static ExtentReports extentReports;
-    protected static ExtentTest extentTest;
+    public static ExtentReports extentReports;
+    public static ExtentTest extentTest;
     protected static ExtentHtmlReporter extentHtmlReporter;
 
 

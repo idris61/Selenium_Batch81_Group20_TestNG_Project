@@ -12,14 +12,14 @@ import utilities.TestBaseRapor;
 
 import java.time.Duration;
 
-public class US003_TC01 extends TestBaseRapor {
+public class US022_TC01 extends TestBaseRapor {
 @Test
 public void testTC01() throws InterruptedException {
     Actions actions = new Actions(Driver.getDriver());
     NaifPage naifPage=new NaifPage();
     JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
-    extentTest=extentReports.createTest("Orders da Browse products/Go shop a gidilmeli");
+    extentTest=extentReports.createTest("Tumunu gor linki olmali ve tiklandigin o kategorinin ana tayfalarına götürmeli");
 
     //Belirt,len Url'gidilir
     Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
@@ -36,12 +36,9 @@ public void testTC01() throws InterruptedException {
     //"Sign" butonuna tıklanır
     naifPage.sign2.click();
     extentTest.info("Sign butonuna tıklandı");
-    //"My orders" butonuna tıklanır
-    jse.executeScript("arguments[0].click();", naifPage.myOrders);
-    extentTest.info("My orders butonuna tıklandı");
-    //"Go Shop" butonuna tıklanır
-    jse.executeScript("arguments[0].click();", naifPage.goshop);
-    extentTest.pass("Go shop butonuna tıklandı");
+
+
+
 
 
 

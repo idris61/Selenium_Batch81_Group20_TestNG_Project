@@ -32,14 +32,14 @@ public class NaifPage {
     @FindBy(xpath = "//*[@id='billing_first_name']")
     public WebElement firstname;
 
-    @FindBy(xpath = "(//*[@Class='button product_type_simple add_to_cart_button ajax_add_to_cart'])[4]")
-    public WebElement basket;
-
     @FindBy(xpath = "//*[@Class='btn btn-dark btn-rounded btn-icon-right continue-shopping mb-4 mt-6']")
     public WebElement goshop;
 
     @FindBy(xpath = "(//*[@Class='woocommerce-button button woocommerce-form-login__submit'])[1]")
     public WebElement sign2;
+
+    @FindBy(xpath = "(//*[@Class='button product_type_simple add_to_cart_button ajax_add_to_cart'])[4]")
+    public WebElement basket;
 
     @FindBy(xpath = "(//*[@Class='button product_type_simple add_to_cart_button ajax_add_to_cart'])[3]")
     public  WebElement triko;
@@ -52,6 +52,21 @@ public class NaifPage {
 
     @FindBy(xpath = "(//*[@Class='btn-product-icon product_type_simple add_to_cart_button ajax_add_to_cart'])[2]")
     public WebElement tarhana;
+
+    @FindBy(xpath = "(//*[@Class='input-text'])[2] ")
+    public WebElement firstName;
+
+    @FindBy(linkText = "(//*[text()='Home & Garden'])[1]")
+    public WebElement homegarden;
+
+    @FindBy(linkText = "(//*[text()='Electronics'])[1]")
+    public WebElement Electronics;
+
+    @FindBy(xpath = "//*[@id='place_order']")
+    public WebElement placeorder;
+
+    @FindBy(xpath = "//*[@Class='woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received order-success']")
+    public WebElement thenkyou;
 
 
 
