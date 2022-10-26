@@ -37,6 +37,7 @@ public class US017_TC02 extends TestBaseRapor {
         extentTest.info("Username or email adress bölümüne vendor email," +
                                "ve Password bölümüne vendor password girildi," +
                                "ve sonra Sing in butonuna tıklandı");
+        //
         //7. My Account’a tıklanır.
         ReusableMethods.waitFor(2);
         MansoorPage.jsClick(mansoorPage.myAccount);
