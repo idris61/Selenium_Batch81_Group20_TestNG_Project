@@ -11,7 +11,7 @@ import pages.IsaPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 
-public class US001_TC01 {
+public class US004_TC01 {
 IsaPage isaPage = new IsaPage();
     @Test
     public void testTc_01() {
