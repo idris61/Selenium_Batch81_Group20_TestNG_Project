@@ -48,7 +48,7 @@ public class US004_TC02 {
         WebElement urunAdedi=Driver.getDriver().findElement(By.xpath("(//span[@class='cart-count'])[1]"));
         String urunSayisi=urunAdedi.getText();
         System.out.println(urunSayisi);
-        Thread.sleep(2000);
+        Thread.sleep(6000);
         Assert.assertTrue(!urunSayisi.equals("0"));
         //sepete tıklanır
         WebElement sepet=Driver.getDriver().findElement(By.xpath("//a[@class='cart-toggle']"));
