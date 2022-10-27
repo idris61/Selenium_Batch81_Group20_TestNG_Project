@@ -45,17 +45,18 @@ public class US004_TC02 {
         WebElement ikinciUrun=Driver.getDriver().findElement(By.xpath("//a[@href='?add-to-cart=14782']"));
         jse.executeScript("arguments[0].click()",ikinciUrun);
         //ürünlerin eklendiği test edilir
-        WebElement urunAdedi=Driver.getDriver().findElement(By.xpath("(//span[@class='cart-count'])[1]"));
-        String urunSayisi=urunAdedi.getText();
-        System.out.println(urunSayisi);
-        Thread.sleep(6000);
-        Assert.assertTrue(!urunSayisi.equals("0"));
+
         //sepete tıklanır
         WebElement sepet=Driver.getDriver().findElement(By.xpath("//a[@class='cart-toggle']"));
         jse.executeScript("arguments[0].click()",sepet);
         //sepeti görüntüle tıklanır
         WebElement wievCart=Driver.getDriver().findElement(By.xpath("//a[@class='button wc-forward']"));
         jse.executeScript("arguments[0].click()",wievCart);
+        WebElement urunAdedi=Driver.getDriver().findElement(By.xpath("(//span[@class='cart-count'])[1]"));
+        String urunSayisi=urunAdedi.getText();
+        System.out.println(urunSayisi);
+        //Thread.sleep(5000);
+        Assert.assertTrue(!urunSayisi.equals("0"));
         // + butonuyla ürün arttırılır
         Thread.sleep(2000);
         WebElement arti=Driver.getDriver().findElement(By.xpath("(//button[@class='quantity-plus w-icon-plus'])[1]"));
